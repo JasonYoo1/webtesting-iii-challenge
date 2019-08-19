@@ -1,7 +1,7 @@
 // Test away!
 
 import React from 'react';
-import { render } from 'react-test-renderer';
+import { renderer } from 'react-test-renderer';
 import Display from './Display';
 
 
@@ -24,3 +24,4 @@ describe ('<Display />', ()=>{
     })
 })
 
+ 

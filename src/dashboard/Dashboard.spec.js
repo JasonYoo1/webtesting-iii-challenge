@@ -4,7 +4,7 @@ import React from 'react';
 import renderer from 'react-test-renderer'
 
 
-import Dashboard from './Dashboard'
+import Dashboard, { asyncFunc } from './Dashboard'
 
 //testing snap
 
@@ -13,3 +13,16 @@ describe('<Dashboard /', ()=>{
     expect(snapshoTree).toMatchSnapshot()
 })
 
+
+
+describe("asyncFunc", ()=>{
+    it ('eventually resolves to success', ()=>{
+        let resolvedValue = null;
+        const expected = "success"
+        asyncFunc().then(res => {
+            resolvedValue = res;
+            expect(resolvedValue).toEqual(expected)
+        })
+    })
+}
+)
