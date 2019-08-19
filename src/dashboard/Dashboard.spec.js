@@ -8,9 +8,9 @@ import Dashboard, { asyncFunc } from './Dashboard'
 
 //testing snap
 
-describe('<Dashboard /', ()=>{
-    const snapshotTree = renderer.create (<Dashboard />).toJSON()
-    expect(snapshoTree).toMatchSnapshot()
+describe("<Dashboard /", ()=>{
+    const snapshotTree = renderer.create (<Dashboard />)
+    expect(snapshotTree.toJSON()).toMatchSnapshot()
 })
 
 
