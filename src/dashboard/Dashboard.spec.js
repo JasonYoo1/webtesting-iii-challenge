@@ -6,15 +6,15 @@ import renderer from 'react-test-renderer'
 
 import Dashboard, { asyncFunc } from './Dashboard'
 
-//testing snap
+//integration test, texting component itself
 
-describe("<Dashboard /", ()=>{
+describe("<Dashboard />", ()=>{
     const snapshotTree = renderer.create (<Dashboard />)
     expect(snapshotTree.toJSON()).toMatchSnapshot()
 })
 
 
-
+//unit test (tests a function)
 describe("asyncFunc", ()=>{
     it ('eventually resolves to success', ()=>{
         let resolvedValue = null;
