@@ -4,6 +4,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Display from './Display';
 import { render } from '@testing-library/react'
+import 'jest-dom/extend-expect';
 
 
 
@@ -12,6 +13,11 @@ describe("<Display />", () => {
         const tree = renderer.create(<Display />)
         expect(tree.toJSON()).toMatchSnapshot();
 
+    })
+    it('red-led test', () => {
+        const component = render(<Display closed={true} locked={true}/>)
+        const display = component.getByText('Locked')
+        expect(display).toHaveClass('red-led')
     })
     
 })
