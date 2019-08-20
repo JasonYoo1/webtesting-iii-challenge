@@ -3,7 +3,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Display from './Display';
-import { render } from '@testing-library/react'
+import { render, getByText } from '@testing-library/react'
 
 
 
@@ -18,9 +18,14 @@ describe("<Display />", () => {
 
 describe ('<Display />', ()=>{
     it('should display open and unlocked', ()=>{
-        const {getText,queryByText} = render(<Display/>)
-        expect (queryByText(/open/i)).toBeTruthy();
-        expect (queryByText(/unlocked/i)).toBeTruthy();
+        const {getByText} = render(<Display/>)
+        expect(getByText('Unlocked'));
+        expect(getByText('Open'));
+    })
+    it('Changes via props',()=>{
+        const {getByText} = render(<Display locked ={true} closed={true}/>);
+        expect(getByText('Locked'));
+        expect(getByText('Closed'));
     })
 })
 
