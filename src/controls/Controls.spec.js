@@ -2,7 +2,7 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import Controls from './Controls'
 
 
@@ -18,5 +18,13 @@ describe('<Controls />', () => {
         const { getByText } = render(<Controls/>)
         getByText(/close gate/i)
         getByText(/lock gate/i)
+    })
+    it(' should toggleClosed change on btn click', ()=>{
+        //created mock function
+        const toggleClosed = jest.fn();
+        const { getByText } = render(<Controls toggleClosed={toggleClosed}/>)
+        const button = getByText(/close gate/i)
+        fireEvent.click(button)
+        expect(toggleClosed).toBeCalledTimes(1)
     })
 })
